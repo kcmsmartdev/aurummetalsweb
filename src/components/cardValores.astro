@@ -1,0 +1,58 @@
+---
+import { Icon } from 'astro-icon/components'
+
+
+interface cardItems{
+    title: string,
+    text: string,
+    icon: string,
+}
+
+const cards: cardItems[] = [
+    {
+        icon: 'mdi:world',
+        title: 'Logística global',
+        text: 'Gestionamos soluciones logísticas de principio a fin, conectando origen y destino a través de redes terrestres, marítimas y aéreas, para que tus envíos lleguen a tiempo y sin complicaciones.'
+    },
+
+    {
+        icon: 'mdi:medal',
+        title: 'Asesoría experta',
+        text: 'Te acompañamos en cada decisión, ayudándote a navegar regulaciones internacionales, cambios de mercado y riesgos comerciales con claridad y confianza.'
+    },
+
+    {
+        icon: 'mdi:file-document',
+        title: 'Cumplimiento normativo',
+        text: 'Nos encargamos de la documentación, los trámites aduaneros y la preparación para auditorías, asegurando que tus exportaciones cumplan con todos los requisitos legales y operativos.'
+    }
+
+
+
+]
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+   
+    {cards.map((card)=>{
+    return(
+
+         <section class="bg-card p-6 shadow-md text-start flex flex-col gap-4 rounded-3xl
+                     border-2 border-transparent hover:border-trazoCard transition-all duration-300 ease-out">
+            <div class="bg-acento w-fit p-2 rounded-4xl ">
+                <Icon name={card.icon} class="text-primario size-8  "/>
+            </div>
+            <h2 class="text-20px font-bold">
+                {card.title}
+            </h2>
+            <p class="text-18px text-naranjaTexto">
+                {card.text}
+                para que tus envíos lleguen a tiempo y sin complicaciones.
+            </p>
+        </section>
+    )
+   })}
+
+    
+
+</div>

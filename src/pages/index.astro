@@ -1,13 +1,95 @@
 ---
-
+import { Icon } from 'astro-icon/components'
+import HeaderMovil from '../components/HeaderMovil.astro';
+import HeaderPc from '../components/HeaderPc.astro';
 import Layout from '../layouts/Layout.astro';
+import ImagenHero from "../assets/imagen-hero.png"
+import ConteoNumero from '../components/ConteoNumero.astro';
+import CardValores from '../components/cardValores.astro';
+import Footer from '../components/Footer.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+  <HeaderPc />
+  <HeaderMovil />
+  <main>
+    <div class="bg-hero min-h-screen">
+      <div class="container mx-auto p-3 flex flex-col md:flex-row justify-center items-center text-center text-blanco">
+        <section class="w-full text-start lg:mt-36">
+          <h1 class="uppercase text-36px leading-10 lg:text-58px font-montserrat font-extrabold text-start lg:leading-16 mt-32">
+            Asesoría y gestión integral de exportaciones <span class="font-light italic">internacionales</span> 
+          </h1>
+          <p class="font-montserrat  text-18px text-blancoClaro mt-5">
+            Acompañamos a las empresas en todo el proceso de  exportación, ofreciendo asesoría experta y 
+            una gestión eficiente, segura y confiable.
+          </p>
+
+          <div class="w-full mt-16 flex flex-col gap-10 lg:flex-row lg:gap-10">
+            <a
+                href="/nuestros-servicios"
+                class="
+                  inline-flex items-center justify-center
+                  bg-primario px-6 py-5
+                  text-negro font-montserrat font-extrabold
+                  rounded-full
+                  transition-transform duration-300 ease-out
+                  hover:-translate-y-0.5
+                  active:translate-y-0">
+
+                CONOCE NUESTROS SERVICIOS
+            </a>
+
+            <a
+                href="/nuestros-servicios"
+                class="
+                  inline-flex items-center justify-center gap-2
+                 underline text-18px
+                  text-blancoClaro font-montserrat font-normal
+                  rounded-full
+                  transition-transform duration-300 ease-out
+                  hover:-translate-y-0.5
+                  active:translate-y-0">
+                  
+                    Solicita una cotización
+                    <Icon name="mdi:arrow-bottom-right" class="-rotate-90" />
+            </a>
+          </div>
+
+          <div class="mt-20">
+            <ConteoNumero/>
+          </div>
+        </section>
+          
+        <section class="w-full h-full flex  justify-center items-center mt-40">
+          <img src={ImagenHero.src} alt="Imagen hero" class="w-full h-auto">
+        </section>
+      </div>
+
+    </div>
+
+    <div class="bg-estrategias">
+      <div class="container mx-auto p-3 flex flex-col justify-center items-center">
+        <section class="font-montserrat mt-32 flex flex-col items-center" >
+          <h2 class="text-32px text-negro font-extrabold text-center">
+            Nuestra ventaja estratégica
+          </h2>
+          <p class="w-full lg:w-4xl text-negroClaro text-18px text-center">
+            Ponemos a tu servicio años de experiencia práctica para que tus operaciones de exportación sean más simples, eficientes y seguras.
+          </p>
+          <div>
+
+              <CardValores />
+
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+      <Footer />
+  </main>
 </Layout>
+

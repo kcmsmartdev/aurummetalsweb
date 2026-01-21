@@ -1,0 +1,144 @@
+---
+import { Icon } from 'astro-icon/components'
+
+
+interface MenuItems {
+    name: string;
+    path: string;
+}
+
+const menuItems: MenuItems[] = [
+    { name: 'Inicio', path: '/' },
+    { name: 'Actividad', path: '/' },
+    { name: 'Socios Estratégicos', path: '/' },
+    { name: 'Sobre Nosotros', path: '/' },
+    { name: 'Contacto', path: '/' },
+];
+---
+
+<header  id="header" class="fixed inset-x-0 top-0 z-50 p-3 lg:hidden transition-all duration-300 ease-out
+         bg-transparent">
+    <nav class="flex justify-between items-center">
+        <a href="/" >
+
+            <img id="logo" src="/logo-aurummetals-color.webp" alt="Logo kener dev" class="size-10 block"/>
+            
+        </a>  
+
+        <Icon id="btnAbrirMenu" name="ci:menu-alt-05" 
+        class="text-nav size-12 flex z-50"/>
+
+    </nav>
+
+    <div
+    id="Menu"
+    class="fixed inset-0 z-40 p-3
+        bg-nav backdrop-blur-md
+        origin-top scale-y-0 transition-transform duration-300 ease-out"
+    >
+        <div id="Menu" class="fixed inset-0 z-40 bg-red backdrop-blur-md mt-2">
+            <div class="flex flex-row  justify-between items-center  p-3">
+                    <a href="/" >
+                        <img id="logo" src="/logo-aurummetals-color.webp" alt="Logo kener dev" class="size-10 block"/>
+                    </a> 
+
+                    <Icon id="btnCerrarMenu" name="iconamoon:close-thin"
+                            class="text-negro size-12 hidden z-50" />
+            </div>
+
+
+
+            <div class="w-full flex flex-col items-center">
+                
+
+            <div class="flex flex-col items-center justify-center mt-5 w-full h-full">
+                <ul class="flex flex-col gap-5 ">
+                    {
+                     menuItems.map((items)=>{
+                        return(
+                            <li class="font-body text-xl font-bold text-center">
+                                <a href={items.path}>
+                                    {items.name}
+                                </a>
+                            </li>
+                        )
+                     })   
+                    }
+                </ul>
+
+                
+
+            </div>
+
+           
+           
+        </div>
+
+    </div>
+    
+</header>
+
+
+<script>
+
+    const btnAbrirMenu = document.getElementById("btnAbrirMenu") ;
+    const btnCerrarMenu = document.getElementById("btnCerrarMenu") ;
+    const Menu = document.getElementById("Menu");
+    const Logo = document.getElementById("logo");
+    const LogoNegro = document.getElementById("logoNegro");
+    const header = document.getElementById("header");
+    let lastScrollY = window.scrollY;
+    
+
+   if(btnAbrirMenu && btnCerrarMenu && Menu && header){
+
+
+        btnAbrirMenu.addEventListener("click", (e)=>{
+        e.preventDefault()
+            
+           
+            btnAbrirMenu.classList.replace("flex", "hidden")
+            btnCerrarMenu.classList.replace("hidden","block")
+            btnCerrarMenu.classList.remove("text-nav")
+            btnCerrarMenu.classList.add("text-black")
+            Menu.classList.remove("scale-y-0");
+            Menu.classList.add("scale-y-100");
+
+         
+            
+
+
+            document.body.classList.add("overflow-hidden");
+    })
+
+        btnCerrarMenu.addEventListener("click", (e)=>{
+        e.preventDefault()
+        
+            btnAbrirMenu.classList.replace("hidden", "flex")
+            btnCerrarMenu.classList.replace("block","hidden")
+            Menu.classList.remove("scale-y-100");
+            Menu.classList.add("scale-y-0");
+
+    
+    })
+
+    window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 20) {
+      // Scroll hacia abajo → mostrar fondo
+      header.classList.add("bg-hero", "backdrop-blur-md", "shadow-sm");
+      header.classList.remove("bg-transparent");
+    } else {
+      // De vuelta al top → ocultar fondo
+      header.classList.remove("bg-hero", "backdrop-blur-md", "shadow-sm");
+      header.classList.add("bg-transparent");
+    }
+
+    lastScrollY = currentScroll;
+  });
+
+   }
+
+    
+</script>

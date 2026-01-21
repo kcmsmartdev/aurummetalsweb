@@ -1,0 +1,92 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface MenuItems {
+    title: string;
+    url: string;
+}
+
+const menuItems: MenuItems[] = [
+    { title: 'Inicio', url: '/' },
+    { title: 'Actividad', url: '/' },
+    { title: 'Socios Estratégicos', url: '/' },
+    { title: 'Sobre Nosotros', url: '/' },
+    { title: 'Contacto', url: '/' },
+];
+---
+
+<header class="w-full fixed hidden lg:block z-50">
+    <div id="datos" class="flex flex-col">
+        <div class="w-full bg-nav-dato">
+        <div class="container mx-auto p-3 flex justify-between text-negro text-14px font-montserrat">
+            <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Ver nuestros"
+            class="flex gap-1 items-center">
+                <Icon name="eva:email-outline" />
+                esteban.gamarra@aurummetals.com.pe
+            </a>
+
+            <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Ver nuestros"
+            class="flex gap-1 items-center">
+                <Icon name="ph:map-pin-line" />
+                Av. Elmer Faucett - Tomas Val Nro. E1 Int. 303e (Centro Aéreo Comercial)
+            </a>
+
+
+
+            <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Ver nuestros"
+            class="flex gap-1 items-center">
+                <Icon name="ph:whatsapp-logo-light" />
+                +51 975 889 555
+            </a>
+
+
+        </div>
+
+        </div>
+    <div class="w-full bg-nav ">
+        <nav class="container mx-auto p-3 flex justify-between mt-4">
+            <a href="/">
+                <img src="/logo-aurummetals-color.webp" alt="Logo Aurum Metals" class="w-14 h-auto">
+            </a>
+
+            <ul class="flex gap-4 items-center ">
+                 {menuItems.map((item, index) => {
+                            const isLast = index === menuItems.length - 1
+
+                            return (
+
+                            
+                            <li class="relative cursor-pointer">
+                                <a
+                                href={item.url}
+                                class={`group ${
+                                    isLast
+                                    ? "rounded-full font-montserrat p-4 text-black  bg-secundario border border-transparent px-7 font-bold \
+                                   \
+                                     hover:bg-primario hover:border-negro hover:border    hover:text-negro    transition-all duration-300 ease-out"
+                                    : "text-negro/80  hover:text-negro font-normal hover:font-semibold transition-colors duration-200"
+                                }`}
+                                >
+                                {item.title}
+
+                                {!isLast && (
+                                    <span
+                                    class="absolute left-0 -bottom-1 h-0.5 w-full bg-secundario
+                                            scale-x-0 origin-right
+                                            transition-transform duration-300 ease-out
+                                            group-hover:scale-x-100
+                                            group-hover:origin-left"
+                                    />
+                                )}
+                                </a>
+                            </li>
+                            )
+                        })}
+            </ul>
+        </nav>
+
+    </div>
+    </div>
+
+
+</header>

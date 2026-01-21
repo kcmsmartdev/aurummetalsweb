@@ -1,0 +1,30 @@
+---
+
+---
+<p class="font-montserrat text-48px font-extrabold text-blancoClaro/60 leading-10">
+    +<span id="counter" >0</span> AÑOS DE
+         <span class="font-light italic">
+            experiencia
+    </span>
+</p>
+
+
+<script>
+  const counter = document.getElementById('counter');
+  let current = 0;
+  const target = 5;
+  const duration = 800; // ms (rápido y elegante)
+  const stepTime = duration / target;
+
+   if (counter){
+    const interval = setInterval(() => {
+    current++;
+    counter.textContent = current.toString();
+
+    if (current >= target) {
+      clearInterval(interval);
+    }
+  }, stepTime);
+   }
+  
+</script>

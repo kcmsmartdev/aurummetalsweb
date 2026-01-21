@@ -1,0 +1,118 @@
+---
+import Logo from '../assets/logo-aurummetals-color.webp';
+import { Icon } from 'astro-icon/components'
+---
+
+<footer class="container  mx-auto grid grid-cols-1 p-3 ">
+    <div class="grid grid-cols-1 lg:grid-cols-4 mt-20 gap-5">
+        <section >
+            <img src={Logo.src} alt="Logo Aurum Metals" class="w-20 h-auto mb-6">
+            <p class="text-16px text-negroClaro font-montserrat font-normal">
+                En Aurum Metals, nos especializamos en brindar soluciones integrales de exportación que simplifican y optimizan tus operaciones comerciales internacionales.
+            </p>
+
+        </section>
+
+        <section>
+            <h3 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Agencia</h3>
+            <ul class="mt-6 font-montserrat font-medium flex flex-col gap-1  ">   
+                
+
+                <li class="mb-2 ">
+                    <a href="/sobre-nosotros" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Sobre Nosotros
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="/" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Libro de reclamaciones
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="/" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Términos y condiciones
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="/contacto" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Contacto
+                    </a>
+                </li>
+        </section>
+
+        <section>
+            <h3 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Nuestros Servicios</h3>
+            <ul class="mt-6 font-montserrat font-medium flex flex-col gap-1  ">   
+                
+
+                <li class="mb-2 ">
+                    <a href="/transporte-internacional" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Transporte internacional
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="/consolidación-de-carga" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Consolidación de carga
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="/asesoramiento-y-servicio-de-exportación" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Asesoramiento y servicio de exportación
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="/agenciamiento-de-aduanas-y-regularización-del-proceso-de-exportación" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Agenciamiento de aduanas y regularización del proceso de exportación
+                    </a>
+                </li>
+        </section>
+
+        <section>
+            <h3 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Contáctos</h3>
+            <ul class="mt-6 font-montserrat font-medium flex flex-col gap-1  ">   
+                
+
+                <li class="mb-2 flex items-center gap-2 ">
+                    <div class="w-fit p-1 bg-negro rounded-[15%]">
+                        <Icon name="cuida:phone-outline" class="size-5 text-blanco" />
+                    </div>
+                    <a href="#" target="_blank" aria-label="Llamar al número de contacto" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        +51 975 889 555
+                    </a>
+                </li>
+
+                <li class="mb-2 flex items-center gap-2 ">
+                    <div class="w-fit p-1 bg-negro rounded-[15%]">
+                        <Icon name="cuida:mail-outline" class="size-5 text-blanco" />
+                    </div>
+                    <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Enviar correo a esteban.gamarra@aurummetals.com.pe" target="_blank" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        esteban.gamarra@aurummetals.com.pe
+                    </a>
+                </li>
+
+
+                <li class="mb-2 flex items-center gap-2 ">
+                    <div class="w-fit p-1 bg-negro rounded-[15%]">
+                        <Icon name="cuida:map-pin-outline" class="size-5 text-blanco" />
+                    </div>
+                    <a href="https://maps.app.goo.gl/pJaeAD6YFywFjcam6" aria-label="Ver ubicación en Google Maps" target="_blank" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Av. Elmer Faucett - Tomas Val Nro. E1 Int. 303e (Centro Aéreo Comercial)
+                    </a>
+                </li>
+                
+        </section>
+    </div>
+
+
+    <div class="flex flex-wrap  text-14px justify-between items-center text-negroClaro font-montserrat font-normal border-t
+                border-t-negroClaro/20 mt-10 pt-6 gap-4">
+        <p >
+            © {new Date().getFullYear()} Aurum Metals. Todos los derechos reservados.
+        </p>
+
+        <p>
+            Desarrollado por <a href="https://kenerdev.com" target="_blank" class="underline text-primario">Kener Dev</a>
+        </p>
+
+    </div>
+</footer>
