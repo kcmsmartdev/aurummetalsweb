@@ -1,70 +1,74 @@
 ---
-import { Icon } from 'astro-icon/components'
+
+interface SubMenuItem {
+  title: string;
+  url: string;
+}
 
 interface MenuItems {
     title: string;
-    url: string;
+    url?: string;
+    children?: SubMenuItem[];
 }
 
 const menuItems: MenuItems[] = [
-    { title: 'Inicio', url: '/' },
-    { title: 'Actividad', url: '/' },
-    { title: 'Socios Estratégicos', url: '/' },
-    { title: 'Sobre Nosotros', url: '/' },
-    { title: 'Contacto', url: '/' },
+  { title: 'Inicio', url: '/' },
+  { title: 'Sobre Nosotros', url: '/sobre-nosotros' },
+  {
+    title: 'Actividad',
+    children: [
+      {
+        title: 'Transporte internacional',
+        url: '/actividad/transporte-internacional',
+      },
+      {
+        title: 'Consolidación de carga',
+        url: '/actividad/consolidacion-de-carga',
+      },
+      {
+        title: 'Asesoramiento y servicio de exportación',
+        url: '/actividad/asesoramiento-exportacion',
+      },
+      {
+        title: 'Agenciamiento de aduanas',
+        url: '/actividad/agenciamiento-aduanas',
+      },
+    ],
+  },
+
+  { title: 'Socios Estratégicos', url: '/socios' },
+  
+  { title: 'Contáctanos', url: '/contacto' },
 ];
+
 ---
 
 <header class="w-full fixed hidden lg:block z-50">
-    <div id="datos" class="flex flex-col">
-        <div class="w-full bg-nav-dato">
-        <div class="container mx-auto p-3 flex justify-between text-negro text-14px font-montserrat">
-            <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Ver nuestros"
-            class="flex gap-1 items-center">
-                <Icon name="eva:email-outline" />
-                esteban.gamarra@aurummetals.com.pe
-            </a>
-
-            <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Ver nuestros"
-            class="flex gap-1 items-center">
-                <Icon name="ph:map-pin-line" />
-                Av. Elmer Faucett - Tomas Val Nro. E1 Int. 303e (Centro Aéreo Comercial)
-            </a>
-
-
-
-            <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Ver nuestros"
-            class="flex gap-1 items-center">
-                <Icon name="ph:whatsapp-logo-light" />
-                +51 975 889 555
-            </a>
-
-
-        </div>
-
-        </div>
     <div class="w-full bg-nav ">
-        <nav class="container mx-auto p-3 flex justify-between mt-4">
-            <a href="/">
+        <nav class="container mx-auto p-3 flex justify-between mb-2">
+            <a href="/" aria-label="Página de inicio">
                 <img src="/logo-aurummetals-color.webp" alt="Logo Aurum Metals" class="w-14 h-auto">
             </a>
 
-            <ul class="flex gap-4 items-center ">
+            <ul class="flex gap-5 items-center ">
+
+
                  {menuItems.map((item, index) => {
                             const isLast = index === menuItems.length - 1
 
                             return (
 
                             
-                            <li class="relative cursor-pointer">
+                            <li class="relative cursor-pointer group">
                                 <a
+                                aria-label="Visitar sitio web de Aurum Logistics"
                                 href={item.url}
                                 class={`group ${
                                     isLast
-                                    ? "rounded-full font-montserrat p-4 text-black  bg-secundario border border-transparent px-7 font-bold \
+                                    ? "rounded-full font-montserrat p-4 text-black  bg-acento border border-transparent px-7 font-bold \
                                    \
-                                     hover:bg-primario hover:border-negro hover:border    hover:text-negro    transition-all duration-300 ease-out"
-                                    : "text-negro/80  hover:text-negro font-normal hover:font-semibold transition-colors duration-200"
+                                     hover:bg-acento hover:border-negro hover:border    hover:text-negro    transition-all duration-300 ease-out"
+                                    : "text-negro  hover:text-negro font-medium  transition-colors duration-200 active:text-primario"
                                 }`}
                                 >
                                 {item.title}
@@ -79,6 +83,32 @@ const menuItems: MenuItems[] = [
                                     />
                                 )}
                                 </a>
+
+
+                                 {/* SUBMENU */}
+                                    {item.children && (
+                                        <ul
+                                            class="absolute top-full left-0 mt-3 w-72
+                                                    bg-white shadow-lg rounded-xl
+                                                    opacity-0 invisible
+                                                    group-hover:opacity-100 group-hover:visible
+                                                    transition-all duration-300 ease-out
+                                                    border border-gray-100"
+                                            >
+                                            {item.children.map((sub) => (
+                                                <li>
+                                                <a
+                                                    href={sub.url}
+                                                    class="block px-5 rounded-xl py-3 text-sm text-negro
+                                                        hover:bg-acento hover:font-semibold
+                                                        transition-all"
+                                                >
+                                                    {sub.title}
+                                                </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                             </li>
                             )
                         })}
@@ -86,7 +116,8 @@ const menuItems: MenuItems[] = [
         </nav>
 
     </div>
-    </div>
+    
 
 
 </header>
+

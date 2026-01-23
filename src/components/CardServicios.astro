@@ -1,0 +1,58 @@
+---
+
+
+
+interface serviciosItems {
+    title: string,
+    imagen: string
+}
+
+const ServiciosItems: serviciosItems[] = [
+    {title:"Transporte internacional",  imagen:"/imagen_servicio_1.webp"},
+    {title:"Consolidación de carga",  imagen:"/imagen_servicio_2.webp"},
+    {title:"Asesoramiento y servicio de exportación",  imagen:"/imagen_servicio_3.webp"},
+    {title:"Agenciamiento de aduanas y regularización del proceso de exportación",  imagen:"/imagen_Servicio_4.webp"},
+]
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-3 p-3 gap-5 font-montserrat  mt-10">
+
+    {
+        ServiciosItems.map((items)=>(
+
+            <section
+            class="bg-blanco rounded-xl overflow-hidden
+                  shadow-sm hover:shadow-lg
+                  transition-shadow duration-300 ease-out
+                  group"
+          >
+            <image
+              src={items.imagen}
+              alt={items.title}
+              loading="lazy"
+              class="w-full h-56 object-cover
+                    transition-transform duration-300 ease-out
+                    group-hover:scale-[1.03]"
+            />
+
+            <a
+              href="/nuestros-servicios/transporte-internacional"
+              aria-label="Visitar nuestro servicios"
+              class="block text-center
+                    font-bold text-18px
+                    px-4 py-4
+                    bg-acento text-negro
+                    transition-colors duration-300 ease-out
+                    group-hover:bg-primario"
+            >
+              {items.title}
+            </a>
+          </section>
+
+
+        ))
+    }
+
+</div>
+
+

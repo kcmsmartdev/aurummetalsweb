@@ -32,7 +32,7 @@ const cards: cardItems[] = [
 ]
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 mb-16">
    
     {cards.map((card)=>{
     return(
@@ -45,7 +45,7 @@ const cards: cardItems[] = [
             <h2 class="text-20px font-bold">
                 {card.title}
             </h2>
-            <p class="text-18px text-naranjaTexto">
+            <p class="text-14px text-naranjaTexto font-normal">
                 {card.text}
                 para que tus envíos lleguen a tiempo y sin complicaciones.
             </p>

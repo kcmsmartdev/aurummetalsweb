@@ -3,10 +3,10 @@ import Logo from '../assets/logo-aurummetals-color.webp';
 import { Icon } from 'astro-icon/components'
 ---
 
-<footer class="container  mx-auto grid grid-cols-1 p-3 ">
+<footer class="container  mx-auto grid grid-cols-1 p-3 lg:p-10 ">
     <div class="grid grid-cols-1 lg:grid-cols-4 mt-20 gap-5">
         <section >
-            <img src={Logo.src} alt="Logo Aurum Metals" class="w-20 h-auto mb-6">
+            <img src={Logo.src} alt="Logo Aurum Metals" loading="lazy" class="w-20 h-auto mb-6">
             <p class="text-16px text-negroClaro font-montserrat font-normal">
                 En Aurum Metals, nos especializamos en brindar soluciones integrales de exportación que simplifican y optimizan tus operaciones comerciales internacionales.
             </p>
@@ -15,53 +15,59 @@ import { Icon } from 'astro-icon/components'
 
         <section>
             <h3 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Agencia</h3>
-            <ul class="mt-6 font-montserrat font-medium flex flex-col gap-1  ">   
+            <ul class="mt-6 font-montserrat font-medium text-base flex flex-col gap-1  ">   
                 
 
                 <li class="mb-2 ">
-                    <a href="/sobre-nosotros" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="/sobre-nosotros" aria-label="Visitar página Sobre nosotros" class="text-negroClaro hover:text-primario transition-colors duration-200">
                         Sobre Nosotros
                     </a>
                 </li>
                 <li class="mb-2">
-                    <a href="/" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="/contacto" aria-label="Visitar página Contacto" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Contacto
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="/libro-de-reclamaciones" aria-label="Visitar página Libro de reclamaciones"  class="text-negroClaro hover:text-primario transition-colors duration-200">
                         Libro de reclamaciones
                     </a>
                 </li>
                 <li class="mb-2">
-                    <a href="/" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="/terminos-y-condiciones" aria-label="Visitar página Terminos y condiciones" class="text-negroClaro hover:text-primario transition-colors duration-200">
                         Términos y condiciones
                     </a>
                 </li>
                 <li class="mb-2">
-                    <a href="/contacto" class="text-negroClaro hover:text-primario transition-colors duration-200">
-                        Contacto
+                    <a href="/politica-de-cookies" aria-label="Visitar página Terminos y condiciones" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                        Política de cookies
                     </a>
                 </li>
+                
         </section>
 
         <section>
             <h3 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Nuestros Servicios</h3>
-            <ul class="mt-6 font-montserrat font-medium flex flex-col gap-1  ">   
+            <ul class="mt-6 font-montserrat text-base font-medium flex flex-col gap-1  ">   
                 
 
                 <li class="mb-2 ">
-                    <a href="/transporte-internacional" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="/transporte-internacional"  aria-label="Visitar página Transporte internacional" class="text-negroClaro hover:text-primario transition-colors duration-200">
                         Transporte internacional
                     </a>
                 </li>
                 <li class="mb-2">
-                    <a href="/consolidación-de-carga" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="/consolidación-de-carga" aria-label="Visitar página Consolidado de carga" class="text-negroClaro hover:text-primario transition-colors duration-200">
                         Consolidación de carga
                     </a>
                 </li>
                 <li class="mb-2">
-                    <a href="/asesoramiento-y-servicio-de-exportación" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="/asesoramiento-y-servicio-de-exportación" aria-label="Visitar página Asesoramiento y servicio de exportación" class="text-negroClaro hover:text-primario transition-colors duration-200">
                         Asesoramiento y servicio de exportación
                     </a>
                 </li>
                 <li class="mb-2">
-                    <a href="/agenciamiento-de-aduanas-y-regularización-del-proceso-de-exportación" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="/agenciamiento-de-aduanas-y-regularización-del-proceso-de-exportación" aria-label="Visitar página Agenciamiento de aduanas y regularización del proceso de exportación" class="text-negroClaro hover:text-primario transition-colors duration-200">
                         Agenciamiento de aduanas y regularización del proceso de exportación
                     </a>
                 </li>
@@ -69,14 +75,14 @@ import { Icon } from 'astro-icon/components'
 
         <section>
             <h3 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Contáctos</h3>
-            <ul class="mt-6 font-montserrat font-medium flex flex-col gap-1  ">   
+            <ul class="mt-6 font-montserrat text-base font-medium flex flex-col gap-1  ">   
                 
 
                 <li class="mb-2 flex items-center gap-2 ">
                     <div class="w-fit p-1 bg-negro rounded-[15%]">
                         <Icon name="cuida:phone-outline" class="size-5 text-blanco" />
                     </div>
-                    <a href="#" target="_blank" aria-label="Llamar al número de contacto" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="www.google.com" target="_blank" aria-label="Llamar al número de contacto" class="text-negroClaro hover:text-primario transition-colors duration-200">
                         +51 975 889 555
                     </a>
                 </li>
@@ -85,7 +91,7 @@ import { Icon } from 'astro-icon/components'
                     <div class="w-fit p-1 bg-negro rounded-[15%]">
                         <Icon name="cuida:mail-outline" class="size-5 text-blanco" />
                     </div>
-                    <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Enviar correo a esteban.gamarra@aurummetals.com.pe" target="_blank" class="text-negroClaro hover:text-primario transition-colors duration-200">
+                    <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Enviar correo a esteban.gamarra@aurummetals.com.pe" target="_blank" class="text-negroClaro hover:text-primario transition-colors duration-200 break-all">
                         esteban.gamarra@aurummetals.com.pe
                     </a>
                 </li>
@@ -111,7 +117,7 @@ import { Icon } from 'astro-icon/components'
         </p>
 
         <p>
-            Desarrollado por <a href="https://kenerdev.com" target="_blank" class="underline text-primario">Kener Dev</a>
+            Desarrollado por <a href="https://kenerdev.com" aria-label="Visitar página de kenerdev" target="_blank" class="underline text-links">Kener Dev</a>
         </p>
 
     </div>

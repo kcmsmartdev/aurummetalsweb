@@ -12,6 +12,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.12",
     "astro-icon": "^1.1.5",
+    "nodemailer": "^7.0.12",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {

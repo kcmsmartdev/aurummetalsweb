@@ -2,18 +2,47 @@
 import { Icon } from 'astro-icon/components'
 
 
+interface SubMenuItem {
+  title: string;
+  url: string;
+}
+
 interface MenuItems {
-    name: string;
-    path: string;
+    title: string;
+    url?: string;
+    children?: SubMenuItem[];
 }
 
 const menuItems: MenuItems[] = [
-    { name: 'Inicio', path: '/' },
-    { name: 'Actividad', path: '/' },
-    { name: 'Socios Estratégicos', path: '/' },
-    { name: 'Sobre Nosotros', path: '/' },
-    { name: 'Contacto', path: '/' },
+  { title: 'Inicio', url: '/' },
+
+  {
+    title: 'Actividad',
+    children: [
+      {
+        title: 'Transporte internacional',
+        url: '/actividad/transporte-internacional',
+      },
+      {
+        title: 'Consolidación de carga',
+        url: '/actividad/consolidacion-de-carga',
+      },
+      {
+        title: 'Asesoramiento y servicio de exportación',
+        url: '/actividad/asesoramiento-exportacion',
+      },
+      {
+        title: 'Agenciamiento de aduanas',
+        url: '/actividad/agenciamiento-aduanas',
+      },
+    ],
+  },
+
+  { title: 'Socios Estratégicos', url: '/socios' },
+  { title: 'Sobre Nosotros', url: '/sobre-nosotros' },
+  { title: 'Contáctanos', url: '/contacto' },
 ];
+
 ---
 
 <header  id="header" class="fixed inset-x-0 top-0 z-50 p-3 lg:hidden transition-all duration-300 ease-out
@@ -38,7 +67,7 @@ const menuItems: MenuItems[] = [
     >
         <div id="Menu" class="fixed inset-0 z-40 bg-red backdrop-blur-md mt-2">
             <div class="flex flex-row  justify-between items-center  p-3">
-                    <a href="/" >
+                    <a href="/" aria-label="Visitar sitio web de Aurum Logistics" >
                         <img id="logo" src="/logo-aurummetals-color.webp" alt="Logo kener dev" class="size-10 block"/>
                     </a> 
 
@@ -52,19 +81,56 @@ const menuItems: MenuItems[] = [
                 
 
             <div class="flex flex-col items-center justify-center mt-5 w-full h-full">
-                <ul class="flex flex-col gap-5 ">
-                    {
-                     menuItems.map((items)=>{
-                        return(
-                            <li class="font-body text-xl font-bold text-center">
-                                <a href={items.path}>
-                                    {items.name}
-                                </a>
-                            </li>
-                        )
-                     })   
-                    }
-                </ul>
+                <ul class="flex flex-col gap-5 w-full">
+  {menuItems.map((item, index) => (
+    <li class="w-full text-center">
+      
+      {/* ITEM NORMAL */}
+      {!item.children && (
+        <a
+          href={item.url}
+          class="block text-xl font-bold py-2"
+        >
+          {item.title}
+        </a>
+      )}
+
+      {/* ITEM CON SUBMENU */}
+      {item.children && (
+        <>
+          <button
+            type="button"
+            class="w-full flex items-center justify-center gap-2
+                   text-xl font-bold py-2"
+            data-submenu-button
+          >
+            {item.title}
+            <Icon name="mdi:chevron-down" class="size-6 transition-transform duration-300" />
+          </button>
+
+          <ul
+            class="mt-2 flex flex-col gap-3
+                   max-h-0 overflow-hidden
+                   transition-all duration-300 ease-out"
+            data-submenu
+          >
+            {item.children.map((sub) => (
+              <li>
+                <a
+                  href={sub.url}
+                  class="block text-base font-medium py-1 opacity-90"
+                >
+                  {sub.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </li>
+  ))}
+</ul>
+
 
                 
 
@@ -113,7 +179,7 @@ const menuItems: MenuItems[] = [
 
         btnCerrarMenu.addEventListener("click", (e)=>{
         e.preventDefault()
-        
+            document.body.classList.remove("overflow-hidden");
             btnAbrirMenu.classList.replace("hidden", "flex")
             btnCerrarMenu.classList.replace("block","hidden")
             Menu.classList.remove("scale-y-100");
@@ -141,4 +207,33 @@ const menuItems: MenuItems[] = [
    }
 
     
+</script>
+
+<script>
+  const submenuButtons = document.querySelectorAll("[data-submenu-button]");
+
+  submenuButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const submenu = btn.nextElementSibling;
+      const icon = btn.querySelector("svg");
+
+      if (!submenu) return;
+
+      const isOpen = submenu.style.maxHeight;
+
+      // Cerrar todos
+      document.querySelectorAll("[data-submenu]").forEach((menu) => {
+        menu.style.maxHeight = null;
+      });
+      document.querySelectorAll("[data-submenu-button] svg").forEach((i) => {
+        i.classList.remove("rotate-180");
+      });
+
+      // Abrir el actual
+      if (!isOpen) {
+        submenu.style.maxHeight = submenu.scrollHeight + "px";
+        icon?.classList.add("rotate-180");
+      }
+    });
+  });
 </script>
