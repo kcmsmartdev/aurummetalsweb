@@ -20,25 +20,25 @@ const menuItems: MenuItems[] = [
     title: 'Actividad',
     children: [
       {
-        title: 'Transporte internacional',
-        url: '/actividad/transporte-internacional',
-      },
-      {
         title: 'Consolidación de carga',
         url: '/actividad/consolidacion-de-carga',
       },
       {
-        title: 'Asesoramiento y servicio de exportación',
-        url: '/actividad/asesoramiento-exportacion',
+        title: 'Transporte internacional',
+        url: '/actividad/transporte-internacional',
       },
       {
         title: 'Agenciamiento de aduanas',
-        url: '/actividad/agenciamiento-aduanas',
+        url: '/actividad/agenciamiento-de-aduanas-y-regularización-del-proceso-de-exportación',
+      },
+      {
+        title: 'Asesoramiento y servicio de exportación',
+        url: '/actividad/asesoramiento-y-servicio-de-exportacion',
       },
     ],
   },
 
-  { title: 'Socios Estratégicos', url: '/socios-estrategicos' },
+  { title: 'Socios Estratégicos', url: '/socios' },
   { title: 'Sobre Nosotros', url: '/sobre-nosotros' },
   { title: 'Contáctanos', url: '/contacto' },
 ];
@@ -46,7 +46,7 @@ const menuItems: MenuItems[] = [
 ---
 
 <header  id="header" class="fixed inset-x-0 top-0 z-50 p-3 lg:hidden transition-all duration-300 ease-out
-         bg-transparent">
+         bg-hero">
     <nav class="flex justify-between items-center">
         <a href="/" >
 
@@ -105,7 +105,7 @@ const menuItems: MenuItems[] = [
             data-submenu-button
           >
             {item.title}
-            <Icon name="mdi:chevron-down" class="size-6 transition-transform duration-300" />
+            <Icon name="mdi:chevron-down" class="size-6  transition-transform duration-300" />
           </button>
 
           <ul
@@ -179,35 +179,23 @@ const menuItems: MenuItems[] = [
 
         btnCerrarMenu.addEventListener("click", (e)=>{
         e.preventDefault()
-            document.body.classList.remove("overflow-hidden");
+          
             btnAbrirMenu.classList.replace("hidden", "flex")
             btnCerrarMenu.classList.replace("block","hidden")
             Menu.classList.remove("scale-y-100");
             Menu.classList.add("scale-y-0");
 
+             document.body.classList.remove("overflow-hidden");
     
     })
 
-    window.addEventListener("scroll", () => {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > 20) {
-      // Scroll hacia abajo → mostrar fondo
-      header.classList.add("bg-hero", "backdrop-blur-md", "shadow-sm");
-      header.classList.remove("bg-transparent");
-    } else {
-      // De vuelta al top → ocultar fondo
-      header.classList.remove("bg-hero", "backdrop-blur-md", "shadow-sm");
-      header.classList.add("bg-transparent");
-    }
-
-    lastScrollY = currentScroll;
-  });
+   
 
    }
 
     
 </script>
+
 
 <script>
   const submenuButtons = document.querySelectorAll("[data-submenu-button]");
@@ -219,7 +207,7 @@ const menuItems: MenuItems[] = [
 
       if (!submenu) return;
 
-      const isOpen = submenu.style.maxHeight;
+      const isOpen = submenu.style.maxHeight
 
       // Cerrar todos
       document.querySelectorAll("[data-submenu]").forEach((menu) => {
@@ -236,4 +224,4 @@ const menuItems: MenuItems[] = [
       }
     });
   });
-</script>
+</script> 
