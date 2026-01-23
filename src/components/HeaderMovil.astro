@@ -42,109 +42,100 @@ const menuItems: MenuItems[] = [
   { title: 'Sobre Nosotros', url: '/sobre-nosotros' },
   { title: 'Contáctanos', url: '/contacto' },
 ];
-
+const currentPath = Astro.url.pathname;
 ---
 
-<header  id="header" class="fixed inset-x-0 top-0 z-50 p-3 lg:hidden transition-all duration-300 ease-out
-         bg-hero">
-    <nav class="flex justify-between items-center">
-        <a href="/" >
 
-            <img id="logo" src="/logo-aurummetals-color.webp" alt="Logo kener dev" class="size-10 block"/>
-            
-        </a>  
+<header id="header" class="fixed inset-x-0 top-0 z-50 p-3 lg:hidden transition-all duration-300 ease-out bg-hero">
+  <nav class="flex justify-between items-center">
+    <a href="/">
+      <img id="logo" src="/logo-aurummetals-color.webp" alt="Logo kener dev" class="size-10 block"/>
+    </a>  
 
-        <Icon id="btnAbrirMenu" name="ci:menu-alt-05" 
-        class="text-nav size-12 flex z-50"/>
+    <Icon id="btnAbrirMenu" name="ci:menu-alt-05" class="text-nav size-12 flex z-50"/>
+  </nav>
 
-    </nav>
-
-    <div
+  <div
     id="Menu"
-    class="fixed inset-0 z-40 p-3
-        bg-nav backdrop-blur-md
-        origin-top scale-y-0 transition-transform duration-300 ease-out"
-    >
-        <div id="Menu" class="fixed inset-0 z-40 bg-red backdrop-blur-md mt-2">
-            <div class="flex flex-row  justify-between items-center  p-3">
-                    <a href="/" aria-label="Visitar sitio web de Aurum Logistics" >
-                        <img id="logo" src="/logo-aurummetals-color.webp" alt="Logo kener dev" class="size-10 block"/>
-                    </a> 
+    class="fixed inset-0 z-40 p-3 bg-nav backdrop-blur-md origin-top scale-y-0 transition-transform duration-300 ease-out"
+  >
+    <div class="flex flex-row justify-between items-center p-3">
+      <a href="/" aria-label="Visitar sitio web de Aurum Logistics">
+        <img id="logo" src="/logo-aurummetals-color.webp" alt="Logo kener dev" class="size-10 block"/>
+      </a>
 
-                    <Icon id="btnCerrarMenu" name="iconamoon:close-thin"
-                            class="text-negro size-12 hidden z-50" />
-            </div>
-
-
-
-            <div class="w-full flex flex-col items-center">
-                
-
-            <div class="flex flex-col items-center justify-center mt-5 w-full h-full">
-                <ul class="flex flex-col gap-5 w-full">
-  {menuItems.map((item, index) => (
-    <li class="w-full text-center">
-      
-      {/* ITEM NORMAL */}
-      {!item.children && (
-        <a
-          href={item.url}
-          class="block text-xl font-bold py-2"
-        >
-          {item.title}
-        </a>
-      )}
-
-      {/* ITEM CON SUBMENU */}
-      {item.children && (
-        <>
-          <button
-            type="button"
-            class="w-full flex items-center justify-center gap-2
-                   text-xl font-bold py-2"
-            data-submenu-button
-          >
-            {item.title}
-            <Icon name="mdi:chevron-down" class="size-6  transition-transform duration-300" />
-          </button>
-
-          <ul
-            class="mt-2 flex flex-col gap-3
-                   max-h-0 overflow-hidden
-                   transition-all duration-300 ease-out"
-            data-submenu
-          >
-            {item.children.map((sub) => (
-              <li>
-                <a
-                  href={sub.url}
-                  class="block text-base font-medium py-1 opacity-90"
-                >
-                  {sub.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-    </li>
-  ))}
-</ul>
-
-
-                
-
-            </div>
-
-           
-           
-        </div>
-
+      <Icon id="btnCerrarMenu" name="iconamoon:close-thin" class="text-negro size-12"/>
     </div>
-    
+
+    <div class="w-full flex flex-col items-center mt-5">
+      <ul class="flex flex-col gap-5 w-full text-center">
+        {menuItems.map((item) => {
+          const isActive =
+            item.url === currentPath ||
+            (item.children && currentPath.startsWith('/actividad'));
+
+          return (
+            <li class="w-full">
+
+              {/* ITEM NORMAL */}
+              {!item.children && (
+                <a
+                  href={item.url}
+                  class={`block text-xl font-bold py-2 transition-colors ${
+                    item.url === currentPath ? 'text-primario' : 'text-negro'
+                  }`}
+                >
+                  {item.title}
+                </a>
+              )}
+
+              {/* ITEM CON SUBMENU */}
+              {item.children && (
+                <>
+                  <button
+                    type="button"
+                    class={`w-full flex items-center justify-center gap-2 text-xl font-bold py-2 transition-colors ${
+                      isActive ? 'text-primario' : 'text-negro'
+                    }`}
+                    data-submenu-button
+                  >
+                    {item.title}
+                    <Icon
+                      name="mdi:chevron-down"
+                      class={`size-6 transition-transform duration-300 ${
+                        isActive ? 'rotate-180 text-primario' : ''
+                      }`}
+                    />
+                  </button>
+
+                  <ul
+                    class={`mt-2 flex flex-col gap-3 max-h-0 overflow-hidden transition-all duration-300 ease-out ${
+                      isActive ? 'max-h-96' : ''
+                    }`}
+                    data-submenu
+                  >
+                    {item.children.map((sub) => (
+                      <li>
+                        <a
+                          href={sub.url}
+                          class={`block text-base font-medium py-1 transition-colors ${
+                            sub.url === currentPath ? 'text-primario' : 'text-negro opacity-90'
+                          }`}
+                        >
+                          {sub.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
 </header>
-
-
 <script>
 
     const btnAbrirMenu = document.getElementById("btnAbrirMenu") ;

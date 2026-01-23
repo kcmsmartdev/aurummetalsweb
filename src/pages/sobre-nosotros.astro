@@ -3,13 +3,107 @@ import Footer from "../components/Footer.astro";
 import HeaderMovil from "../components/HeaderMovil.astro";
 import HeaderPc from "../components/HeaderPc.astro";
 import Layout from "../layouts/Layout.astro";
-
+import ImagenNosotros from "../assets/imagen_sobre_nosotros.webp";
+import Form from "../components/Form.astro";
+import SociosEstratgicos from "../components/SociosEstratégicos.astro";
 ---
 <Layout>
   <HeaderPc />
   <HeaderMovil />
-  <main>
+  <main class="flex flex-col">
+    <div class="w-full">
+        <div class="container mx-auto px-3 lg:px-28 mt-32 font-montserrat ">
+            <h2 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Sobre Nosotros</h2>
+        </div>
+    </div>
 
+
+    <div class="bg-blanco">
+      <div class="container mx-auto p-3 lg:px-28  mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-2 font-montserrat">
+
+          <div>
+              <section class="mt-5 flex gap-2 items-center">
+                <h2 class="text-36px text-negro font-extrabold leading-10 ">
+                Líderes en asesoría de <span class="text-primario">comercio exterior</span>
+                </h2>
+                
+                
+              </section>
+  
+              <p class="text-18px text-negroClaro font-medium mt-4">
+                Somos una agencia de asesoramiento especializada en comercio exterior y procesos de exportación, 
+                con más de cinco años de experiencia acompañando a empresas de distintos sectores en sus operaciones internacionales.
+              </p>
+  
+              <p class="text-18px text-negroClaro font-medium mt-3 ">
+                Nuestro trabajo se basa en entender las necesidades de cada cliente y ofrecer soluciones claras, eficientes y 
+                adaptadas a cada operación. Acompañamos cada proceso de principio a fin, brindando asesoría antes, durante y después de la exportación, con un fuerte enfoque en el cumplimiento normativo, la optimización de costos y la seguridad operativa.
+              </p>
+  
+              <p class="text-18px text-negroClaro font-medium mt-3 ">
+                Creemos en las relaciones a largo plazo, en la comunicación transparente y en 
+                convertir procesos complejos en operaciones simples y confiables para nuestros clientes.
+              </p>
+          </div>
+  
+          <div class="flex justify-center items-center ">
+            <img src={ImagenNosotros.src} alt="Imagen Sobre Nosotros" loading="lazy"
+            class="w-lg h-auto rounded-4xl p-3 bg-acento">
+          </div>
+        </div>
+
+    </div>
+    </div>
+
+ 
+     <div class="w-full p-3 lg:px-28 font-montserrat flex flex-col items-center bg-nav-dato/30">
+       <h2 class="text-26px text-negro font-bold mt-28">
+            Socios Estratégicos
+        </h2>
+
+        <p class="text-18px text-center text-negroClaro">
+          "Juntos ofrecemos soluciones integrales para nuestros clientes"
+        </p>
+
+        
+        <div class="container mx-auto p-3 lg:px-28 bg-blanco rounded-4xl mt-7 mb-10 ">
+          <SociosEstratgicos/>
+        </div>
+        
+    </div>
+
+    <div class="bg-blanco">
+      <div class="container mx-auto p-3 lg:px-28 font-montserrat grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div>
+          <section class="mt-24 flex gap-2 items-center">
+            <h2 class="text-32px text-negro font-extrabold ">
+              Contáctanos
+            </h2>
+                
+            <div class="flex-1 h-0.5 bg-acento"></div>
+          
+          </section>
+
+          <p class="text-18px font-normal text-negroClaro mt-3">
+            Ponte en contacto con nuestro equipo y da el siguiente paso en tus operaciones de exportación con el respaldo de expertos
+          </p>
+          
+          <div class="mt-5">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3902.3022599003352!2d-77.10518600000002!3d-12.022699999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDAxJzIxLjciUyA3N8KwMDYnMTguNyJX!5e0!3m2!1ses-419!2spe!4v1769049775517!5m2!1ses-419!2spe" 
+              width="100%" height="400" title="Ubicación de Aurum Metals en Google Maps" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="mt-24">
+            <Form />
+
+        </div>
+
+      </div>
+    </div>
   </main>
   <Footer/>
 </Layout>

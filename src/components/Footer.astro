@@ -4,10 +4,10 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <footer class="container  mx-auto grid grid-cols-1 p-3 lg:p-10 ">
-    <div class="grid grid-cols-1 lg:grid-cols-4 mt-20 gap-5">
+    <div class="grid grid-cols-1 lg:grid-cols-4 mt-20 gap-10">
         <section >
             <img src={Logo.src} alt="Logo Aurum Metals" loading="lazy" class="w-20 h-auto mb-6">
-            <p class="text-16px text-negroClaro font-montserrat font-normal">
+            <p class="text-18px text-negroClaro font-montserrat font-medium">
                 En Aurum Metals, nos especializamos en brindar soluciones integrales de exportación que simplifican y optimizan tus operaciones comerciales internacionales.
             </p>
 
@@ -74,13 +74,13 @@ import { Icon } from 'astro-icon/components'
         </section>
 
         <section>
-            <h3 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Contáctos</h3>
+            <h3 class="font-bold text-negro text-20px font-montserrat border-l-2 border-primario pl-5">Contacto</h3>
             <ul class="mt-6 font-montserrat text-base font-medium flex flex-col gap-1  ">   
                 
 
                 <li class="mb-2 flex items-center gap-2 ">
-                    <div class="w-fit p-1 bg-negro rounded-[15%]">
-                        <Icon name="cuida:phone-outline" class="size-5 text-blanco" />
+                    <div class="w-fit p-1 bg-acento rounded-[15%]">
+                        <Icon name="cuida:phone-outline" class="size-5 text-primario" />
                     </div>
                     <a href="https://wa.me/51975889555" target="_blank" aria-label="Llamar al número de contacto" 
                     class="text-negroClaro hover:text-primario transition-colors duration-200">
@@ -89,8 +89,8 @@ import { Icon } from 'astro-icon/components'
                 </li>
 
                 <li class="mb-2 flex items-center gap-2 ">
-                    <div class="w-fit p-1 bg-negro rounded-[15%]">
-                        <Icon name="cuida:mail-outline" class="size-5 text-blanco" />
+                    <div class="w-fit p-1 bg-acento rounded-[15%]">
+                        <Icon name="cuida:mail-outline" class="size-5 text-primario" />
                     </div>
                     <a href="mailto:esteban.gamarra@aurummetals.com.pe" aria-label="Enviar correo a esteban.gamarra@aurummetals.com.pe" target="_blank" class="text-negroClaro hover:text-primario transition-colors duration-200 break-all">
                         esteban.gamarra@aurummetals.com.pe
@@ -99,8 +99,8 @@ import { Icon } from 'astro-icon/components'
 
 
                 <li class="mb-2 flex items-center gap-2 ">
-                    <div class="w-fit p-1 bg-negro rounded-[15%]">
-                        <Icon name="cuida:map-pin-outline" class="size-5 text-blanco" />
+                    <div class="w-fit p-1 bg-acento rounded-[15%]">
+                        <Icon name="cuida:map-pin-outline" class="size-5 text-primario" />
                     </div>
                     <a href="https://maps.app.goo.gl/pJaeAD6YFywFjcam6" aria-label="Ver ubicación en Google Maps" target="_blank" class="text-negroClaro hover:text-primario transition-colors duration-200">
                         Av. Elmer Faucett - Tomas Val Nro. E1 Int. 303e (Centro Aéreo Comercial)
@@ -118,7 +118,8 @@ import { Icon } from 'astro-icon/components'
         </p>
 
         <p>
-            Desarrollado por <a href="https://kenerdev.com" aria-label="Visitar página de kenerdev" target="_blank" class="underline text-links">Kener Dev</a>
+            Desarrollado por <a href="https://kenerdev.com" aria-label="Visitar página de kenerdev" target="_blank" 
+            class="underline text-negro font-semibold">Kener Dev</a>
         </p>
 
     </div>

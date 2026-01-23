@@ -27,7 +27,7 @@ const menuItems: MenuItems[] = [
       },
       {
         title: 'Agenciamiento de aduanas',
-        url: '/actividad/agenciamiento-de-aduanas-y-regularización-del-proceso-de-exportación',
+        url: '/actividad/agenciamiento-de-aduanas-y-regularizacion-del-proceso-de-exportacion',
       },
       {
         title: 'Asesoramiento y servicio de exportación',
@@ -40,84 +40,88 @@ const menuItems: MenuItems[] = [
   
   { title: 'Contáctanos', url: '/contacto' },
 ];
-
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="w-full fixed hidden lg:block z-50">
-    <div class="w-full bg-nav ">
-        <nav class="container mx-auto p-3 flex justify-between mb-2">
-            <a href="/" aria-label="Página de inicio">
-                <img src="/logo-aurummetals-color.webp" alt="Logo Aurum Metals" class="w-14 h-auto">
-            </a>
+  <div class="w-full bg-nav">
+    <nav class="container mx-auto p-3 flex justify-between mb-2">
+      <a href="/" aria-label="Página de inicio">
+        <img src="/logo-aurummetals-color.webp" alt="Logo Aurum Metals" class="w-14 h-auto">
+      </a>
 
-            <ul class="flex gap-5 items-center ">
+      <ul class="flex gap-5 items-center">
+        {menuItems.map((item, index) => {
+          const isLast = index === menuItems.length - 1;
 
+          // Detectar si el item o alguno de sus hijos está activo
+          const isParentActive =
+            item.url === currentPath ||
+            (item.children && item.children.some(sub => sub.url === currentPath));
 
-                 {menuItems.map((item, index) => {
-                            const isLast = index === menuItems.length - 1
+          return (
+            <li class="relative cursor-pointer group">
+              <a
+                aria-label="Visitar sitio web de Aurum Logistics"
+                href={item.url ?? "#"}
+                class={`group ${
+                  isLast
+                    ? "rounded-full font-montserrat p-4 bg-primario px-7 font-bold hover:bg-acento transition-all duration-300 ease-out"
+                    : `font-medium transition-colors duration-200 ${
+                        isParentActive
+                          ? "text-primario font-semibold" // padre activo
+                          : "text-negro hover:text-negro"
+                      }`
+                }`}
+              >
+                {item.title}
 
-                            return (
+                {!isLast && (
+                  <span
+                    class="absolute left-0 -bottom-1 h-0.5 w-full bg-secundario
+                           scale-x-0 origin-right
+                           transition-transform duration-300 ease-out
+                           group-hover:scale-x-100
+                           group-hover:origin-left"
+                  />
+                )}
+              </a>
 
-                            
-                            <li class="relative cursor-pointer group">
-                                <a
-                                aria-label="Visitar sitio web de Aurum Logistics"
-                                href={item.url}
-                                class={`group ${
-                                    isLast
-                                    ? "rounded-full font-montserrat p-4 text-black  bg-acento border border-transparent px-7 font-bold \
-                                   \
-                                     hover:bg-acento hover:border-negro hover:border    hover:text-negro    transition-all duration-300 ease-out"
-                                    : "text-negro  hover:text-negro font-medium  transition-colors duration-200 active:text-primario"
-                                }`}
-                                >
-                                {item.title}
-
-                                {!isLast && (
-                                    <span
-                                    class="absolute left-0 -bottom-1 h-0.5 w-full bg-secundario
-                                            scale-x-0 origin-right
-                                            transition-transform duration-300 ease-out
-                                            group-hover:scale-x-100
-                                            group-hover:origin-left"
-                                    />
-                                )}
-                                </a>
-
-
-                                 {/* SUBMENU */}
-                                    {item.children && (
-                                        <ul
-                                            class="absolute top-full left-0 mt-3 w-72
-                                                    bg-white shadow-lg rounded-xl
-                                                    opacity-0 invisible
-                                                    group-hover:opacity-100 group-hover:visible
-                                                    transition-all duration-300 ease-out
-                                                    border border-gray-100"
-                                            >
-                                            {item.children.map((sub) => (
-                                                <li>
-                                                <a
-                                                    href={sub.url}
-                                                    class="block px-5 rounded-xl py-3 text-sm text-negro
-                                                        hover:bg-acento hover:font-semibold
-                                                        transition-all"
-                                                >
-                                                    {sub.title}
-                                                </a>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                            </li>
-                            )
-                        })}
-            </ul>
-        </nav>
-
-    </div>
-    
-
-
+              {/* SUBMENU */}
+              {item.children && (
+                <ul
+                  class={`absolute top-full left-0 mt-3 w-72
+                    bg-white shadow-lg rounded-xl
+                    border border-gray-100
+                    opacity-0 invisible
+                    group-hover:opacity-100 group-hover:visible
+                    transition-all duration-300 ease-out`}
+                >
+                  {item.children.map((sub) => {
+                    const isSubActive = sub.url === currentPath; // hijo activo
+                    return (
+                      <li>
+                        <a
+                          href={sub.url}
+                          class={`block px-5 rounded-xl py-3 text-sm transition-all ${
+                            isSubActive
+                              ? "text-primario font-semibold" // subactivo
+                              : "text-negro hover:bg-acento hover:font-semibold"
+                          }`}
+                        >
+                          {sub.title}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  </div>
 </header>
+
 

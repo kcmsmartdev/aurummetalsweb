@@ -11,20 +11,38 @@
 
 <script>
   const counter = document.getElementById('counter');
-  let current = 0;
-  const target = 5;
-  const duration = 800; // ms (rápido y elegante)
-  const stepTime = duration / target;
 
-   if (counter){
-    const interval = setInterval(() => {
-    current++;
-    counter.textContent = current.toString();
+  if (counter) {
+    let current = 0;
+    const target = 5;
+    const duration = 800;
+    const stepTime = duration / target;
+    let hasStarted = false;
 
-    if (current >= target) {
-      clearInterval(interval);
-    }
-  }, stepTime);
-   }
-  
+    const startCounter = () => {
+      if (hasStarted) return;
+      hasStarted = true;
+
+      const interval = setInterval(() => {
+        current++;
+        counter.textContent = current.toString();
+
+        if (current >= target) {
+          clearInterval(interval);
+        }
+      }, stepTime);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          startCounter();
+          observer.disconnect(); // deja de observar (solo una vez)
+        }
+      },
+      { threshold: 0.5 } // 50% visible
+    );
+
+    observer.observe(counter);
+  }
 </script>
