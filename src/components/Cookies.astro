@@ -1,0 +1,82 @@
+---
+
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 w-full z-50 hidden font-montserrat"
+>
+  <div class="bg-footer text-blanco px-6 py-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+
+      <p class="text-sm md:text-base leading-relaxed text-blancoClaro max-w-3xl">
+        Utilizamos cookies para mejorar tu experiencia, analizar el uso del sitio y optimizar nuestros servicios.
+        Al continuar navegando, aceptas nuestra
+        <a
+          href="/politica-de-cookies"
+          class="text-primario underline hover:opacity-80 transition"
+        >
+          Política de Cookies
+        </a>.
+      </p>
+
+      <div class="flex gap-3 shrink-0">
+        <button
+          id="btn-rechazar-cookies"
+          class="px-5 py-2 rounded-xl border border-primario
+                 text-primario font-semibold
+                 hover:bg-primario hover:text-negro
+                 transition"
+        >
+          Rechazar
+        </button>
+
+        <button
+          id="btn-aceptar-cookies"
+          class="px-5 py-2 rounded-xl bg-primario
+                 text-negro font-semibold
+                 hover:bg-secundario
+                 transition"
+        >
+          Aceptar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+    const banner = document.getElementById("cookie-banner") as HTMLDivElement | null;
+const btnAceptar = document.getElementById("btn-aceptar-cookies") as HTMLButtonElement | null;
+const btnRechazar = document.getElementById("btn-rechazar-cookies") as HTMLButtonElement | null;
+
+const CLAVE_COOKIES = "cookies_aceptadas";
+
+function mostrarBanner(): void {
+  banner?.classList.remove("hidden");
+}
+
+function ocultarBanner(): void {
+  banner?.classList.add("hidden");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const estado = localStorage.getItem(CLAVE_COOKIES);
+
+  if (!estado) {
+    mostrarBanner();
+  }
+
+  btnAceptar?.addEventListener("click", () => {
+    localStorage.setItem(CLAVE_COOKIES, "true");
+    ocultarBanner();
+  });
+
+  btnRechazar?.addEventListener("click", () => {
+    localStorage.setItem(CLAVE_COOKIES, "false");
+    ocultarBanner();
+  });
+});
+
+</script>

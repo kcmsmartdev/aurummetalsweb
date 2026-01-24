@@ -1,15 +1,239 @@
 ---
+import { Icon } from "astro-icon/components";
 import Footer from "../components/Footer.astro";
+import Form from "../components/Form.astro";
 import HeaderMovil from "../components/HeaderMovil.astro";
 import HeaderPc from "../components/HeaderPc.astro";
+
 import Layout from "../layouts/Layout.astro";
+import LogoAurumCustoms from "../assets/logo_aurumcustoms.svg"
+import LogoAurumLogistics from "../assets/logo-aurum-logistics.png"
+import LogoLoomisfrom from "../assets/logo_Loomis-International.png"
 
 ---
 <Layout>
   <HeaderPc />
   <HeaderMovil />
-  <main>
+ <main class="flex flex-col">
+   
+      <div class="container mx-auto px-3 lg:px-28 mt-32 font-montserra ">    
+        <span class="font-bold text-negroClaro text-base font-montserrat border-l-2 border-primario pl-5">
+          &gt; Socios estratégicos
+        </span>         
+      </div>
 
+      <div class="container mx-auto px-3 lg:px-28 mt-5 font-montserra ">
+         <h1 class="text-26px text-negroClaro font-extrabold leading-10 mt-5 italic font-montserrat">
+          "Líderes en asesoría de <span class="text-primario">comercio exterior"</span>
+          </h1>
+          <h2 class="text-32px text-negro font-extrabold leading-10 mt-10 font-montserrat ">
+            Socios estratégicos
+          </h2>           
+          <p class="w-full lg:w-1/2 font-montserrat text-18px text-negroClaro font-medium mt-4">
+                En Aurum Metals trabajamos junto a socios estratégicos que complementan nuestros servicios y fortalecen cada operación de comercio exterior.
+          </p> 
+          
+          
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-24">
+            
+            <div class="bg-acento/80 rounded-2xl ">
+              <img src={LogoAurumCustoms.src} alt="Logo de aurum customs" loading="lazy" class=" w-fit h-autopy-16 px-5 ">
+            </div>
+            
+            <div >
+              <h2 class="text-26px text-negro font-montserrat font-bold">
+                Aurum Customs
+              </h2>
+              <p class="text-18px font-montserrat font-medium text-negroClaro">
+                Especialistas en la gestión aduanera integral. 
+                Aurum Customs garantiza que todas sus operaciones cumplan rigurosamente con los marcos legales
+                 internacionales, minimizando tiempos de espera y optimizando costos arancelarios.
+              </p>
+
+              <div class="grid grid-cols-2 mt-5">
+
+                  <div class="flex flex-row gap-2 items-top">
+                    <Icon name="mdi:security"class="text-primario size-5" />
+                      <div>
+                        <h3 class="text-base text-negro font-montserrat font-semibold">
+                        Eficiencia Aduanera
+                        </h3>
+                        <p class="text-14px text-negroClaro font-montserrat">
+                          Despacho ágil y sin contratiempos
+                        </p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-row gap-2 items-top">
+                    <Icon name="mdi:legal" class="text-primario size-5" />
+                      <div>
+                        <h3 class="text-base text-negro font-montserrat font-semibold">
+                          Cumplimiento Legal
+                        </h3>
+                        <p class="text-14px text-negroClaro font-montserrat">
+                         Asesoría normativa constante.
+                        </p>
+                    </div>
+                  </div>
+
+
+
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-24">
+            
+    
+            <div >
+              <h2 class="text-26px text-negro font-montserrat font-bold">
+                Aurum Logistics
+              </h2>
+              <p class="text-18px font-montserrat font-medium text-negroClaro">
+                Nuestra columna vertebral en el movimiento de mercancías. Con una red de transporte multimodal, 
+                Aurum Logistics conecta sus productos con los mercados más exigentes del mundo, ofreciendo
+                 visibilidad en tiempo real.
+              </p>
+
+              <div class="grid grid-cols-2 mt-5">
+
+                  <div class="flex flex-row gap-2 items-top">
+                    <Icon name="mdi:world" class="text-primario size-5" />
+                      <div>
+                        <h3 class="text-base text-negro font-montserrat font-semibold">
+                        Alcance Global
+                        </h3>
+                        <p class="text-14px text-negroClaro font-montserrat">
+                          Presencia en los principales puertos.
+                        </p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-row gap-2 items-top">
+                    <Icon name="mdi:package-variant-closed" class="text-primario size-5" />
+                      <div>
+                        <h3 class="text-base text-negro font-montserrat font-semibold">
+                          Gestión de Carga
+                        </h3>
+                        <p class="text-14px text-negroClaro font-montserrat">
+                         Soluciones de almacenaje seguro.
+                        </p>
+                    </div>
+                  </div>
+
+
+
+              </div>
+            </div>
+
+            <div class="bg-nav-dato rounded-2xl ">
+              <img src={LogoAurumLogistics.src} alt="Logo de aurum customs" loading="lazy" class=" w-fit h-auto py-16 px-5 ">
+            </div>
+
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-24">
+            
+            <div class="bg-acento/80 rounded-2xl flex items-center justify-center ">
+              <img src={LogoLoomisfrom.src} alt="Logo de aurum customs" loading="lazy" class=" w-fit h-autopy-16 px-5 ">
+            </div>
+            
+            <div >
+              <h2 class="text-26px text-negro font-montserrat font-bold">
+                Loomis International
+              </h2>
+              <p class="text-18px font-montserrat font-medium text-negroClaro">
+                El estándar en transporte de valores. Para nuestros metales preciosos y mercancías de alto valor, Loomis International proporciona
+                 la máxima seguridad y confianza en el transporte transfronterizo especializado.
+              </p>
+
+              <div class="grid grid-cols-2 mt-5">
+
+                  <div class="flex flex-row gap-2 items-top">
+                    <Icon name="mdi:car-security" class="text-primario size-5" />
+                      <div>
+                        <h3 class="text-base text-negro font-montserrat font-semibold">
+                        Seguridad Blindada
+                        </h3>
+                        <p class="text-14px text-negroClaro font-montserrat">
+                          Protocolos de alta protección.
+                        </p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-row gap-2 items-top">
+                    <Icon name="mdi:gold" class="text-primario size-5" />
+                      <div>
+                        <h3 class="text-base text-negro font-montserrat font-semibold">
+                          Transporte de Valores
+                        </h3>
+                        <p class="text-14px text-negroClaro font-montserrat">
+                         Expertos en metales preciosos.
+                        </p>
+                    </div>
+                  </div>
+
+
+
+              </div>
+            </div>
+
+
+
+          </div>
+
+      </div>
+    
+
+
+    <div class="bg-blanco">
+      <div class="container mx-auto p-3 lg:px-28 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-2 font-montserrat">
+
+        
+        </div>
+
+    </div>
+    </div>
+
+ 
+
+
+    <div class="bg-blanco">
+      <div class="container mx-auto p-3 lg:px-28 font-montserrat grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div>
+          <section class="mt-24 flex gap-2 items-center">
+            <h2 class="text-32px text-negro font-extrabold ">
+              Contáctanos
+            </h2>
+                
+            <div class="flex-1 h-0.5 bg-acento"></div>
+          
+          </section>
+
+          <p class="text-18px font-normal text-negroClaro mt-3">
+            Ponte en contacto con nuestro equipo y da el siguiente paso en tus operaciones de exportación con el respaldo de expertos
+          </p>
+          
+          <div class="mt-5">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3902.3022599003352!2d-77.10518600000002!3d-12.022699999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDAxJzIxLjciUyA3N8KwMDYnMTguNyJX!5e0!3m2!1ses-419!2spe!4v1769049775517!5m2!1ses-419!2spe" 
+              width="100%" height="400" title="Ubicación de Aurum Metals en Google Maps" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="mt-24">
+            <Form />
+
+        </div>
+
+      </div>
+    </div>
   </main>
   <Footer/>
 </Layout>

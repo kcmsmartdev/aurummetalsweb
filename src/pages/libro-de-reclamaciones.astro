@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import FormualrioReclamos from "../components/FormualrioReclamos.astro";
 import HeaderMovil from "../components/HeaderMovil.astro";
 import HeaderPc from "../components/HeaderPc.astro";
 import Layout from "../layouts/Layout.astro";
@@ -8,8 +9,17 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
   <HeaderPc />
   <HeaderMovil />
-  <main>
+  <main class="flex flex-col">
+     <div class="container mx-auto px-3 lg:px-28 mt-32 font-montserra ">
+          
+            <span class="font-bold text-negroClaro text-base font-montserrat border-l-2 border-primario pl-5">
+               &gt; Reclamos y quejas
+            </span>         
+      </div>
 
+      <div class="container mx-auto p-3 lg:px-28 mb-16">
+        <FormualrioReclamos />
+      </div>
   </main>
   <Footer/>
 </Layout>

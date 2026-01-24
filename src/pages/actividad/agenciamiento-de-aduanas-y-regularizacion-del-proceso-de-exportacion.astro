@@ -3,19 +3,173 @@ import Footer from "../../components/Footer.astro";
 import HeaderMovil from "../../components/HeaderMovil.astro";
 import HeaderPc from "../../components/HeaderPc.astro";
 import Layout from "../../layouts/Layout.astro";
-
-
+import { Icon } from "astro-icon/components";
+import ImagenAgenciamiento from "../../assets/imagen_regularización.webp"
+import Form from "../../components/Form.astro";
+import SociosEstratgicos from "../../components/SociosEstratégicos.astro";
 
 
 ---
 <Layout>
   <HeaderPc />
   <HeaderMovil />
-  <main>
-    <div class="p-4">
-      <h1 class="mt-32">
-        Agenciamiento de aduanas 
-      </h1>
+  <main class="grid grid-cols-1">
+    
+    <div class="container mx-auto px-3 lg:px-28 mt-32 font-montserra ">
+          
+            <span class="font-bold text-negroClaro text-base font-montserrat border-l-2 border-primario pl-5">
+                Actividad&gt; Agenciamiento de aduanas y regularización del proceso de exportación
+            </span>         
+    </div>
+    
+    <div class="container mx-auto px-3 lg:px-28 mt-5 font-montserra grid grid-cols-1 lg:grid-cols-2  gap-16">
+       <div>
+              
+              <h1 class="text-26px text-negroClaro font-extrabold leading-10 mt-5 italic font-montserrat">
+                "Líderes en asesoría de <span class="text-primario">comercio exterior"</span>
+                </h1>
+                <h2 class="text-32px text-negro font-extrabold leading-10 mt-10 font-montserrat ">
+                  Agenciamiento de aduanas y regularización del proceso de exportación
+                </h2>
+                
+                
+        
+  
+              <p class="text-18px text-negroClaro font-medium mt-4 font-montserrat">
+                En Aurum Metals gestionamos de manera eficiente el agenciamiento de aduanas, encargándonos de todos los trámites y 
+                documentación necesarios para asegurar el cumplimiento de la normativa vigente en cada operación de exportación.
+                Nuestro equipo supervisa cada detalle del proceso aduanero para evitar demoras, sanciones o 
+                inconvenientes legales que puedan afectar la continuidad del negocio.
+              </p>
+
+              <p class="text-18px text-negroClaro font-medium mt-4 font-montserrat">
+                Además, trabajamos en la regularización y correcta estructuración de los procesos de exportación, garantizando operaciones transparentes y 
+                seguras. Gracias a nuestro conocimiento normativo y experiencia operativa, brindamos tranquilidad a nuestros clientes, permitiéndoles 
+                enfocarse en el crecimiento de sus actividades comerciales con el respaldo de un aliado confiable.
+              </p>
+  
+               <h3 class="text-18px font-bold text-negro mt-10 font-montserrat">
+                Nuestra ventaja estratégica
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-3 font-montserrat mt-4 mb-5">
+                  
+                    <div class="flex items-center gap-1 bg-acento/50 w-fit p-4 rounded-2xl ">
+                      <Icon name="mdi:world" class="text-primario size-5  "/>
+                      <span class="text-14px font-semibold text-negro">
+                          Logística global
+                      </span>
+                    </div>
+
+                    <div class="flex items-center gap-1 bg-acento/50 w-fit p-4 rounded-2xl ">
+                      <Icon name="mdi:medal" class="text-primario size-5  "/>
+                      <span class="text-14px font-medium text-negro">
+                          Asesoría experta
+                      </span>
+                    </div>
+
+                    <div class="flex items-center gap-1 bg-acento/50 w-fit p-4 rounded-2xl ">
+                      <Icon name="mdi:file-document" class="text-primario size-5  "/>
+                      <span class="text-14px font-medium text-negro">
+                          Cumplimiento normativo
+                      </span>
+                    </div>
+                 
+              </div>
+              
+              
+        </div>
+
+        <div>
+              <div >
+                <img src={ImagenAgenciamiento.src} alt="Imagen de consolidado de carga" class="w-3xl h-auto" loading="lazy"> 
+              </div>
+
+              <section class="mt-10 grid gap-2 items-center font-montserrat">
+                <h2 class="text-20px text-negro font-extrabold leading-10  ">
+                  Nuestros servicios
+                </h2>
+
+                <ul class="mt-3 font-montserrat  text-base font-bold flex flex-col gap-1  ">   
+                
+
+                      <li class="mb-2 ">
+                          <a href="/actividad/transporte-internacional"  aria-label="Visitar página Transporte internacional" class="text-negroClaro underline underline-offset-8  hover:text-primario transition-colors duration-200">
+                              Transporte internacional
+                          </a>
+                      </li>
+
+                      <li class="mb-2">
+                          <a href="/actividad/consolidacion-de-carga" aria-label="Visitar página Consolidado de carga" class="text-negroClaro underline underline-offset-8 hover:text-primario transition-colors duration-200">
+                              Consolidación de carga
+                          </a>
+                      </li>
+                      <li class="mb-2">
+                          <a href="/actividad/asesoramiento-y-servicio-de-exportacion" aria-label="Visitar página Asesoramiento y servicio de exportación" class="text-negroClaro underline underline-offset-8 hover:text-primario transition-colors duration-200">
+                              Asesoramiento y servicio de exportación
+                          </a>
+                      </li>
+                      <li class="mb-2">
+                          <a href="/actividad/agenciamiento-de-aduanas-y-regularizacion-del-proceso-de-exportacion" aria-label="Visitar página Agenciamiento de aduanas y regularización del proceso de exportación" class="text-negroClaro  underline underline-offset-8 hover:text-primario transition-colors duration-200">
+                              Agenciamiento de aduanas y regularización del proceso de exportación
+                          </a>
+                      </li>
+                  </ul> 
+                
+                
+              </section>
+  
+              
+        </div>
+
+    </div>
+
+
+    <div class="w-full p-3 lg:px-28 font-montserrat flex flex-col items-center mt-32 bg-nav-dato/30">
+       <h2 class="text-26px text-negro font-bold mt-28">
+            Socios Estratégicos
+        </h2>
+
+        <p class="text-18px text-center text-negroClaro">
+          "Juntos ofrecemos soluciones integrales para nuestros clientes"
+        </p>
+
+        
+        <div class="container mx-auto p-3 lg:px-28 bg-blanco rounded-4xl mt-7 mb-10 ">
+          <SociosEstratgicos/>
+        </div>
+        
+    </div>
+
+    <div class="bg-blanco">
+      <div class="container mx-auto p-3 lg:px-28 font-montserrat grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div>
+          <section class="mt-24 flex gap-2 items-center">
+            <h2 class="text-32px text-negro font-extrabold ">
+              Contáctanos
+            </h2>
+                
+            <div class="flex-1 h-0.5 bg-acento"></div>
+          
+          </section>
+
+          <p class="text-18px font-normal text-negroClaro mt-3">
+            Ponte en contacto con nuestro equipo y da el siguiente paso en tus operaciones de exportación con el respaldo de expertos
+          </p>
+          
+          <div class="mt-5">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3902.3022599003352!2d-77.10518600000002!3d-12.022699999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDAxJzIxLjciUyA3N8KwMDYnMTguNyJX!5e0!3m2!1ses-419!2spe!4v1769049775517!5m2!1ses-419!2spe" 
+              width="100%" height="400" title="Ubicación de Aurum Metals en Google Maps" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="mt-24">
+            <Form />
+
+        </div>
+
+      </div>
     </div>
   </main>
   <Footer/>
