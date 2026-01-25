@@ -2,7 +2,7 @@
 
 ---
 
-<form id="form" method="POST" action="/api/contacto" class="mx-auto flex flex-col gap-5 font-montserrat font-medium text-negro">
+<form id="contactForm" method="POST"  class="mx-auto flex flex-col gap-5 font-montserrat font-medium text-negro">
             
             
             <div class="flex flex-col gap-1">
@@ -60,7 +60,7 @@
             </div>
               <label class="flex items-center gap-2 text-sm mt-2">
               <input type="checkbox" required />
-              He leído y acepto la política de protección de datos personales
+              He leído y acepto la <a href="/politica-de-privacidad-de-datos" class="text-negro font-bold hover:text-primario">política de protección de datos personales</a>
             </label>
               <button
               id="btnEnviar"
@@ -73,23 +73,19 @@
 </form>
 
 
-<script>
-  const form = document.getElementById("form") as HTMLFormElement | null;
-  const button = document.getElementById("btnEnviar") as HTMLButtonElement | null;
-
-  if (!form || !button) {
-    console.error("Formulario o botón no encontrados");
-    throw new Error("Elementos requeridos no existen");
-  }
-
-  form.addEventListener("submit", async (e: SubmitEvent) =>{
+<script is:inline>
+  const form = document.getElementById("contactForm");
+  const button = document.getElementById("btnEnviar");
+  
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    button.textContent = "Enviando mensaje...";
+    button.textContent = "Enviando...";
     button.disabled = true;
+    button.className = "bg-gray-400 text-white py-4 rounded-2xl";
 
     try {
-      const res = await fetch("/api/contacto", {
+      const res = await fetch("/enviar-contacto.php", {
         method: "POST",
         body: new FormData(form),
       });
@@ -97,38 +93,22 @@
       const data = await res.json();
 
       if (data.success) {
-        // Estado: éxito
-        button.textContent = "Mensaje enviado";
-        button.classList.remove("bg-primario");
-        button.classList.add("bg-green-600", "text-white");
-
+        button.textContent = "Mensaje enviado ✓";
+        button.className = "bg-green-600 text-white py-4 rounded-2xl";
         form.reset();
-
-        // Volver al estado inicial
-        setTimeout(() => {
-          button.textContent = "Enviar mensaje";
-          button.disabled = false;
-          button.classList.remove("bg-green-600");
-          button.classList.add("bg-primario");
-        }, 3000);
-
       } else {
-        throw new Error("Error al enviar");
+        throw new Error();
       }
 
-    } catch (error) {
-      // Estado: error
-      button.textContent = "Error al enviar";
-      button.classList.remove("bg-primario");
-      button.classList.add("bg-red-600", "text-white");
-
-      setTimeout(() => {
-        button.textContent = "Enviar mensaje";
-        button.disabled = false;
-        button.classList.remove("bg-red-600");
-        button.classList.add("bg-primario");
-      }, 3000);
+    } catch {
+      button.textContent = "Error al enviar ✕";
+      button.className = "bg-red-600 text-white py-4 rounded-2xl";
     }
-  
-  })
+
+    setTimeout(() => {
+      button.textContent = "Enviar mensaje";
+      button.disabled = false;
+      button.className = "bg-primario text-negro py-4 rounded-2xl";
+    }, 3000);
+  });
 </script>

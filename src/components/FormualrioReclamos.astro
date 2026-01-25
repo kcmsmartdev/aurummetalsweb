@@ -3,10 +3,8 @@
 ---
 
 <form
-  id="reclamoForm"
-  method="POST"
-  action="/api/reclamos"
-  class="mx-auto flex flex-col gap-6 font-montserrat font-medium text-negro"
+  id="reclamoForm" method="POST" 
+ class="mx-auto flex flex-col gap-6 font-montserrat font-medium text-negro"
 >
 
   <!-- 1. IDENTIFICACIÓN -->
@@ -218,7 +216,7 @@
 
   <label class="flex items-center gap-2 text-sm mt-2">
     <input type="checkbox" required />
-    He leído y acepto la política de protección de datos personales
+    He leído y acepto la <a href="/politica-de-privacidad-de-datos" class="text-negro font-bold hover:text-primario">política de protección de datos personales</a>
   </label>
 
   <!-- BOTÓN -->
@@ -233,63 +231,50 @@
 
 </form>
 
-
-<script>
-  const form = document.getElementById("reclamoForm") as HTMLFormElement | null;
-  const button = document.getElementById("btnReclamo") as HTMLButtonElement | null;
+<script is:inline>
+  const form = document.getElementById("reclamoForm");
+  const button = document.getElementById("btnReclamo");
 
   if (!form || !button) {
-    console.error("Formulario de reclamos o botón no encontrados");
-    throw new Error("Elementos requeridos no existen");
-  }
+    console.error("Formulario o botón no encontrado");
+  } else {
 
-  form.addEventListener("submit", async (e: SubmitEvent) => {
-    e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); 
 
-    // Estado: enviando
-    button.textContent = "Enviando reclamo...";
-    button.disabled = true;
+      button.textContent = "Enviando...";
+      button.disabled = true;
+      button.className = "bg-gray-400 text-white py-4 rounded-2xl";
 
-    try {
-      const res = await fetch("/api/reclamos", {
-        method: "POST",
-        body: new FormData(form),
-      });
+      try {
+        const res = await fetch("/enviar-reclamo.php", {
+          method: "POST",
+          body: new FormData(form),
+        });
 
-      const data = await res.json();
+        const data = await res.json();
 
-      if (data.success) {
-        // Estado: éxito
-        button.textContent = "Reclamo enviado";
-        button.classList.remove("bg-primario");
-        button.classList.add("bg-green-600", "text-white");
+        if (data.success) {
+          button.textContent = "Reclamo enviado ✓";
+          button.className = "bg-green-600 text-white py-4 rounded-2xl";
+          form.reset();
+        } else {
+          throw new Error("Error en PHP");
+        }
 
-        form.reset();
-
-        // Volver a estado inicial
-        setTimeout(() => {
-          button.textContent = "Enviar reclamo";
-          button.disabled = false;
-          button.classList.remove("bg-green-600");
-          button.classList.add("bg-primario");
-        }, 3000);
-
-      } else {
-        throw new Error("Error al enviar el reclamo");
+      } catch (error) {
+        console.error(error);
+        button.textContent = "Error al enviar ✕";
+        button.className = "bg-red-600 text-white py-4 rounded-2xl";
       }
-
-    } catch (error) {
-      // Estado: error
-      button.textContent = "Error al enviar";
-      button.classList.remove("bg-primario");
-      button.classList.add("bg-red-600", "text-white");
 
       setTimeout(() => {
         button.textContent = "Enviar reclamo";
         button.disabled = false;
-        button.classList.remove("bg-red-600");
-        button.classList.add("bg-primario");
-      }, 3000);
-    }
-  });
+        button.className = "bg-primario text-negro py-4 rounded-2xl";
+      }, 3500);
+    });
+
+  }
 </script>
+
